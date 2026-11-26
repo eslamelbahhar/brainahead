@@ -114,12 +114,12 @@ body {
 .site-header,
 .site-main,
 .site-footer {
-  inline-size: min(58rem, 100% - 2rem);
+  inline-size: min(62rem, 100% - 2rem);
   margin-inline: auto;
 }
 
 .site-header {
-  padding-block: 1.75rem 1rem;
+  padding-block: 1.5rem 0.75rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -135,15 +135,55 @@ body {
 
 .brand-mark {
   flex: none;
-  inline-size: 3rem;
+  inline-size: 3.1rem;
   block-size: auto;
   filter: drop-shadow(0 6px 0 var(--card-shadow));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .brand-mark {
+    animation: cloud-bob 3.4s ease-in-out infinite;
+  }
+
+  .chevron-amber {
+    animation: chevron-nudge 3.4s ease-in-out infinite;
+  }
 }
 
 .brand-name {
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.motion-toggle {
+  min-block-size: 2.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background-color: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.motion-toggle:hover {
+  border-color: var(--accent);
+}
+
+.motion-toggle:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }
 
 .tagline-pill {
@@ -169,13 +209,60 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 1.75rem;
-  padding: clamp(1.75rem, 4vw, 3rem);
+  padding: clamp(1.5rem, 3.8vw, 2.75rem);
   color: #ffffff;
   background-color: var(--brand-blue);
   background-image:
-    radial-gradient(circle at 88% 18%, rgba(255, 176, 32, 0.28), transparent 42%),
-    linear-gradient(135deg var(--in-oklab), #2968eb, #1444ad);
+    radial-gradient(circle at 86% 14%, rgba(255, 176, 32, 0.32), transparent 44%),
+    linear-gradient(135deg var(--in-oklab), #2968eb, #123fa3);
   box-shadow: 0 12px 0 var(--card-shadow);
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: -2rem;
+  inline-size: min(26rem, 60%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.11);
+}
+
+.hero-chevrons {
+  inline-size: 100%;
+  block-size: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bg-chev-1 {
+    animation: chevron-flow 4.5s ease-in-out infinite;
+  }
+
+  .bg-chev-2 {
+    opacity: 0.2;
+    animation: chevron-flow 4.5s ease-in-out 0.35s infinite;
+  }
+
+  .bg-chev-3 {
+    animation: chevron-flow 4.5s ease-in-out 0.7s infinite;
+  }
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+@media (min-width: 50rem) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 2.25rem;
+  }
 }
 
 .hero-eyebrow {
@@ -192,19 +279,19 @@ body {
 
 h1 {
   margin-block: 0 1rem;
-  font-size: clamp(1.85rem, 1.25rem + 2.75vw, 2.85rem);
+  font-size: clamp(1.85rem, 1.25rem + 2.6vw, 2.75rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.14;
   letter-spacing: -0.025em;
-  max-inline-size: 20ch;
+  max-inline-size: 19ch;
   text-wrap: balance;
 }
 
 .hero-lead {
-  margin-block: 0 1.75rem;
+  margin-block: 0 1.5rem;
   color: #eaf3ff;
-  font-size: 1.0625rem;
-  max-inline-size: 56ch;
+  font-size: 1.03125rem;
+  max-inline-size: 52ch;
   text-wrap: pretty;
 }
 
@@ -224,7 +311,7 @@ h1 {
   font-weight: 800;
   font-size: 0.9375rem;
   text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
 }
 
 .btn-primary {
@@ -240,17 +327,178 @@ h1 {
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn:active {
+  transform: translateY(1px);
 }
 
 .btn:focus-visible,
-.channel-link:focus-visible {
+.channel-link:focus-visible,
+.series-card:focus-visible,
+.check-pill:focus-visible,
+.check-reset:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
 
-.hero .btn:focus-visible {
+.hero .btn:focus-visible,
+.check-card .check-pill:focus-visible,
+.check-card .check-reset:focus-visible {
   outline-color: var(--brand-amber);
+}
+
+.check-card {
+  background-color: rgba(10, 29, 77, 0.68);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-radius: 1.35rem;
+  padding: 1.25rem;
+  box-shadow: 0 10px 0 rgba(8, 20, 56, 0.34);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.check-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.check-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background-color: var(--brand-amber);
+  color: var(--brand-navy);
+  font-size: 0.8125rem;
+  font-weight: 800;
+}
+
+.check-score {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.check-heading {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.check-sub {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #dbe8ff;
+}
+
+.check-options {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.check-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.85rem;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: start;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.check-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-amber);
+}
+
+.check-pill[aria-pressed="true"] {
+  background-color: #ffffff;
+  color: var(--brand-navy);
+  border-color: var(--brand-amber);
+}
+
+.check-box {
+  flex: none;
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  border-radius: 0.35rem;
+  border: 2px solid currentColor;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.15s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.check-pill[aria-pressed="true"] .check-box {
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue);
+  transform: scale(1.08);
+}
+
+.check-pill[aria-pressed="true"] .check-box::after {
+  content: "";
+  inline-size: 0.45rem;
+  block-size: 0.25rem;
+  border-inline-start: 2.5px solid #ffffff;
+  border-block-end: 2.5px solid #ffffff;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.check-meter {
+  block-size: 0.5rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.check-meter-fill {
+  block-size: 100%;
+  inline-size: 100%;
+  border-radius: 999px;
+  background-color: var(--brand-amber);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.check-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.check-verdict {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.check-reset {
+  flex: none;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .section-head {
@@ -290,6 +538,8 @@ h2 {
 }
 
 .series-card {
+  inline-size: 100%;
+  block-size: 100%;
   background-color: var(--surface);
   border: 2px solid var(--border);
   border-radius: 1.25rem;
@@ -297,11 +547,27 @@ h2 {
   box-shadow: 0 6px 0 var(--card-shadow);
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
+  color: var(--text);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.15s ease, box-shadow 0.2s ease;
+}
+
+.series-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.series-card.is-active {
+  border-color: var(--brand-amber);
+  background-color: var(--surface-alt);
+  transform: translateY(-2px);
 }
 
 .series-tag {
-  align-self: flex-start;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
   font-size: 0.8125rem;
@@ -334,12 +600,49 @@ h2 {
 }
 
 .series-title {
-  margin: 0;
   font-size: 1.0625rem;
   font-weight: 800;
 }
 
 .series-desc {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  text-wrap: pretty;
+}
+
+.series-spotlight {
+  margin-block-start: 1rem;
+  padding: 1.15rem 1.35rem;
+  border-radius: 1.25rem;
+  border: 2px solid var(--border);
+  background-color: var(--surface);
+  box-shadow: 0 6px 0 var(--card-shadow);
+  display: grid;
+  gap: 0.35rem;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+}
+
+.series-spotlight.is-swapping {
+  opacity: 0.65;
+  transform: translateY(3px);
+}
+
+.spotlight-kicker {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.spotlight-hook {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.spotlight-note {
   margin: 0;
   color: var(--text-muted);
   font-size: 0.9375rem;
@@ -362,11 +665,11 @@ h2 {
   color: var(--text);
   text-decoration: none;
   box-shadow: 0 6px 0 var(--card-shadow);
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.15s ease;
 }
 
 .channel-link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--accent);
 }
 
@@ -379,6 +682,11 @@ h2 {
   place-items: center;
   background-color: var(--surface-alt);
   color: var(--accent);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.channel-link:hover .channel-icon {
+  transform: rotate(-6deg) scale(1.08);
 }
 
 .channel-meta {
@@ -401,10 +709,8 @@ h2 {
   padding-block: 1.25rem 2.25rem;
   border-top: 2px solid var(--border);
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+  justify-content: flex-start;
   color: var(--text-muted);
   font-size: 0.9375rem;
 }
@@ -423,37 +729,94 @@ h2 {
   block-size: auto;
 }
 
-.footer-note {
-  margin: 0;
+@keyframes cloud-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes chevron-nudge {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes chevron-flow {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+html.motion-paused .brand-mark,
+html.motion-paused .chevron-amber,
+html.motion-paused .bg-chev {
+  animation-play-state: paused;
+}
+
+html.motion-paused .btn,
+html.motion-paused .check-pill,
+html.motion-paused .check-box,
+html.motion-paused .check-meter-fill,
+html.motion-paused .series-card,
+html.motion-paused .series-spotlight,
+html.motion-paused .channel-link,
+html.motion-paused .channel-icon {
+  transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .btn,
+  .check-pill,
+  .check-box,
+  .check-meter-fill,
+  .series-card,
+  .series-spotlight,
   .channel-link,
-  .tagline-pill {
-    transition: none;
+  .channel-icon,
+  .motion-toggle {
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
     transform: none;
   }
 
   .btn:hover,
-  .channel-link:hover {
+  .check-pill:hover,
+  .series-card:hover,
+  .series-card.is-active,
+  .channel-link:hover,
+  .channel-link:hover .channel-icon {
     transform: none;
   }
 }
 
 @media (forced-colors: active) {
   .hero,
+  .check-card,
   .series-card,
+  .series-spotlight,
   .channel-link,
   .btn,
   .tagline-pill,
-  .series-tag {
+  .series-tag,
+  .motion-toggle,
+  .check-pill {
     border: 2px solid CanvasText;
     box-shadow: none;
   }
 
   .btn:focus-visible,
-  .channel-link:focus-visible {
+  .channel-link:focus-visible,
+  .series-card:focus-visible,
+  .check-pill:focus-visible,
+  .motion-toggle:focus-visible {
     outline: 3px solid Highlight;
   }
 }

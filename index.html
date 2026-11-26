@@ -81,65 +81,133 @@
           <path d="M58 262q20 31 58 31"/>
           <path d="M256 303q38 7 66-21"/>
         </g>
-        <path d="M150 118 207 175 150 232" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M228 118 285 175 228 232" fill="none" stroke="#FDB022" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="chevron-white" d="M150 118 207 175 150 232" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="chevron-amber" d="M228 118 285 175 228 232" fill="none" stroke="#FDB022" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="brand-name">Brain Ahead</span>
     </div>
-    <span class="tagline-pill">Think first. Then AI.</span>
+
+    <div class="header-actions">
+      <button type="button" id="motion-toggle" class="motion-toggle">Pause motion</button>
+      <span class="tagline-pill">Think first. Then AI.</span>
+    </div>
   </header>
 
   <main class="site-main">
     <section class="hero" aria-labelledby="hero-heading">
-      <p class="hero-eyebrow">Smarter habits for the AI age</p>
-      <h1 id="hero-heading">Use AI without switching your brain off.</h1>
-      <p class="hero-lead">
-        Short, research-checked videos built for people who use AI every day and want to keep their edge.
-        Study twists, myth checks, self-tests, and work habits grounded in checked papers. No doom, no hype.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://www.youtube.com/@brain_ahead" rel="me">Watch on YouTube Shorts</a>
-        <a class="btn btn-secondary" href="#channels">All 4 channels</a>
+      <div class="hero-backdrop" aria-hidden="true">
+        <svg class="hero-chevrons" viewBox="0 0 360 280" fill="none">
+          <path class="bg-chev bg-chev-1" d="M40 40 L120 140 L40 240" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="bg-chev bg-chev-2" d="M135 40 L215 140 L135 240" stroke="#FFB020" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="bg-chev bg-chev-3" d="M230 40 L310 140 L230 240" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">Smarter habits for the AI age</p>
+          <h1 id="hero-heading">Use AI without switching your brain off.</h1>
+          <p class="hero-lead">
+            Short, research-checked videos built for people who use AI every day and want to keep their edge.
+            Study twists, myth checks, self-tests, and work habits grounded in checked papers. No doom, no hype.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.youtube.com/@brain_ahead" rel="me">Watch on YouTube Shorts</a>
+            <a class="btn btn-secondary" href="#channels">All 4 channels</a>
+          </div>
+        </div>
+
+        <aside class="check-card" aria-labelledby="check-title">
+          <div class="check-top">
+            <span class="check-badge">10-Second Check</span>
+            <span class="check-score" id="check-score">0 / 3</span>
+          </div>
+          <h2 id="check-title" class="check-heading">Who is driving today?</h2>
+          <p class="check-sub">Tap what you actually did on your last AI task:</p>
+
+          <div class="check-options" role="group" aria-label="Brain check habits">
+            <button type="button" class="check-pill" data-check="0" aria-pressed="false">
+              <span class="check-box" aria-hidden="true"></span>
+              <span>Outlined my own idea before prompting</span>
+            </button>
+            <button type="button" class="check-pill" data-check="1" aria-pressed="false">
+              <span class="check-box" aria-hidden="true"></span>
+              <span>Asked AI to challenge my thinking</span>
+            </button>
+            <button type="button" class="check-pill" data-check="2" aria-pressed="false">
+              <span class="check-box" aria-hidden="true"></span>
+              <span>Can explain the answer without the tab</span>
+            </button>
+          </div>
+
+          <div class="check-meter" aria-hidden="true">
+            <div class="check-meter-fill" id="check-meter-fill"></div>
+          </div>
+
+          <div class="check-footer">
+            <p class="check-verdict" id="check-verdict" aria-live="polite">Tap any habit above to see your score.</p>
+            <button type="button" class="check-reset" id="check-reset" hidden>Reset</button>
+          </div>
+        </aside>
       </div>
     </section>
 
     <section aria-labelledby="series-heading">
       <div class="section-head">
         <h2 id="series-heading">Six series, one rule of thumb</h2>
-        <p class="section-sub">Every episode checks a real source and ends with one question.</p>
+        <p class="section-sub">Pick a series to preview its angle. Every episode checks a real source.</p>
       </div>
+
       <ul class="series-grid" role="list">
-        <li class="series-card">
-          <span class="series-tag tag-blue">Study twists</span>
-          <h3 class="series-title">Brain Fact</h3>
-          <p class="series-desc">What research actually shows about memory, focus, and leaning on AI.</p>
+        <li>
+          <button type="button" class="series-card is-active" data-series="brain-fact" aria-pressed="true">
+            <span class="series-tag tag-blue">Study twists</span>
+            <span class="series-title">Brain Fact</span>
+            <span class="series-desc">What research actually shows about memory, focus, and leaning on AI.</span>
+          </button>
         </li>
-        <li class="series-card">
-          <span class="series-tag tag-coral">Myth checks</span>
-          <h3 class="series-title">Checked.</h3>
-          <p class="series-desc">Popular productivity and learning claims tested against the original studies.</p>
+        <li>
+          <button type="button" class="series-card" data-series="checked" aria-pressed="false">
+            <span class="series-tag tag-coral">Myth checks</span>
+            <span class="series-title">Checked.</span>
+            <span class="series-desc">Popular productivity and learning claims tested against the original studies.</span>
+          </button>
         </li>
-        <li class="series-card">
-          <span class="series-tag tag-amber">Self-tests</span>
-          <h3 class="series-title">60-Second Test</h3>
-          <p class="series-desc">Quick, honest checks to spot autopilot habits before they stick.</p>
+        <li>
+          <button type="button" class="series-card" data-series="test" aria-pressed="false">
+            <span class="series-tag tag-amber">Self-tests</span>
+            <span class="series-title">60-Second Test</span>
+            <span class="series-desc">Quick, honest checks to spot autopilot habits before they stick.</span>
+          </button>
         </li>
-        <li class="series-card">
-          <span class="series-tag tag-green">AI how-tos</span>
-          <h3 class="series-title">Prompt It</h3>
-          <p class="series-desc">Practical prompts shown right on screen so you stay in charge of the thinking.</p>
+        <li>
+          <button type="button" class="series-card" data-series="prompt" aria-pressed="false">
+            <span class="series-tag tag-green">AI how-tos</span>
+            <span class="series-title">Prompt It</span>
+            <span class="series-desc">Practical prompts shown right on screen so you stay in charge of the thinking.</span>
+          </button>
         </li>
-        <li class="series-card">
-          <span class="series-tag tag-navy">At work</span>
-          <h3 class="series-title">Work Brain</h3>
-          <p class="series-desc">Problem framing, keeping your own voice, and skills AI cannot replace.</p>
+        <li>
+          <button type="button" class="series-card" data-series="work" aria-pressed="false">
+            <span class="series-tag tag-navy">At work</span>
+            <span class="series-title">Work Brain</span>
+            <span class="series-desc">Problem framing, keeping your own voice, and skills AI cannot replace.</span>
+          </button>
         </li>
-        <li class="series-card">
-          <span class="series-tag tag-blue">Deep dives</span>
-          <h3 class="series-title">Long Read</h3>
-          <p class="series-desc">90-second explainers when an idea needs room to unpack.</p>
+        <li>
+          <button type="button" class="series-card" data-series="long" aria-pressed="false">
+            <span class="series-tag tag-blue">Deep dives</span>
+            <span class="series-title">Long Read</span>
+            <span class="series-desc">90-second explainers when an idea needs room to unpack.</span>
+          </button>
         </li>
       </ul>
+
+      <div class="series-spotlight" id="series-spotlight" aria-live="polite">
+        <span class="spotlight-kicker" id="spotlight-kicker">Brain Fact · Sample angle</span>
+        <p class="spotlight-hook" id="spotlight-hook">"What happens inside your brain when AI writes your first draft?"</p>
+        <p class="spotlight-note" id="spotlight-note">Study twists unpack surprising cognitive science findings and give you one simple swap to try today.</p>
+      </div>
     </section>
 
     <section id="channels" aria-labelledby="channels-heading">
@@ -216,7 +284,8 @@
       </svg>
       Keep braining.
     </p>
-    <p class="footer-note">English · 9:16 vertical · Research-checked</p>
   </footer>
+
+  <script src="/app.js" defer></script>
 </body>
 </html>
