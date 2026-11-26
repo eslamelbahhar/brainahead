@@ -14,6 +14,9 @@
   <meta property="og:description" content="Use AI without switching your brain off. Think first. Then AI.">
   <meta property="og:url" content="https://brainahead.app/">
   <meta property="og:site_name" content="Brain Ahead">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6RZFEH31D"></script>
   <script>
@@ -56,8 +59,10 @@
   </script>
 </head>
 <body>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
   <header class="site-header">
-    <div class="brand-lockup">
+    <a class="brand-lockup" href="https://brainahead.app/">
       <svg class="brand-mark" role="img" viewBox="-10 0 430 350" aria-labelledby="logo-title">
         <title id="logo-title">Brain Ahead logo</title>
         <defs>
@@ -81,144 +86,109 @@
           <path d="M58 262q20 31 58 31"/>
           <path d="M256 303q38 7 66-21"/>
         </g>
-        <path class="chevron-white" d="M150 118 207 175 150 232" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
-        <path class="chevron-amber" d="M228 118 285 175 228 232" fill="none" stroke="#FDB022" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M150 118 207 175 150 232" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M228 118 285 175 228 232" fill="none" stroke="#FDB022" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="brand-name">Brain Ahead</span>
-    </div>
+    </a>
 
-    <div class="header-actions">
-      <button type="button" id="motion-toggle" class="motion-toggle">Pause motion</button>
-      <span class="tagline-pill">Think first. Then AI.</span>
-    </div>
+    <nav class="header-nav" aria-label="Quick links">
+      <a class="nav-link" href="#series">Series</a>
+      <a class="nav-link" href="#channels">Channels</a>
+      <a class="nav-cta" href="https://www.youtube.com/@brain_ahead" rel="me">Watch Shorts</a>
+    </nav>
   </header>
 
   <main class="site-main">
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-backdrop" aria-hidden="true">
-        <svg class="hero-chevrons" viewBox="0 0 360 280" fill="none">
-          <path class="bg-chev bg-chev-1" d="M40 40 L120 140 L40 240" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="bg-chev bg-chev-2" d="M135 40 L215 140 L135 240" stroke="#FFB020" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="bg-chev bg-chev-3" d="M230 40 L310 140 L230 240" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <div class="hero-copy">
+        <p class="hero-kicker">
+          <span class="kicker-dot" aria-hidden="true"></span>
+          Think first. Then AI.
+        </p>
+        <h1 id="hero-heading">
+          Use AI without switching your <span class="gold-word">brain</span> off.
+        </h1>
+        <p class="hero-lead">
+          Short, research-checked videos for people who use AI every day and want to keep their edge.
+          Study twists, myth checks, self-tests, and work habits with zero doom.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://www.youtube.com/@brain_ahead" rel="me">
+            <span>Watch on YouTube</span>
+            <span class="btn-arrow" aria-hidden="true">&#8594;</span>
+          </a>
+          <a class="btn btn-ghost" href="#channels">Follow on all 4 platforms</a>
+        </div>
       </div>
 
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="hero-eyebrow">Smarter habits for the AI age</p>
-          <h1 id="hero-heading">Use AI without switching your brain off.</h1>
-          <p class="hero-lead">
-            Short, research-checked videos built for people who use AI every day and want to keep their edge.
-            Study twists, myth checks, self-tests, and work habits grounded in checked papers. No doom, no hype.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://www.youtube.com/@brain_ahead" rel="me">Watch on YouTube Shorts</a>
-            <a class="btn btn-secondary" href="#channels">All 4 channels</a>
+      <div class="stage-wrap">
+        <div class="stage-card" id="stage-card" data-spotlight>
+          <div class="stage-bar">
+            <span class="stage-tag" id="stage-tag">Beat 01 · Autopilot</span>
+            <span class="stage-step" id="stage-step">1 / 3</span>
+          </div>
+
+          <div class="stage-body">
+            <p class="stage-headline" id="stage-headline">
+              Open chat first, paste the task, take the <span class="gold-word">first</span> draft.
+            </p>
+            <p class="stage-detail" id="stage-detail">
+              Feels fast in the moment. Thirty minutes later, you barely remember what it argued or why.
+            </p>
+          </div>
+
+          <div class="stage-controls">
+            <div class="stage-tabs" role="tablist" aria-label="Thinking loop demo">
+              <button type="button" class="stage-tab is-active" role="tab" aria-selected="true" data-beat="0">Autopilot</button>
+              <button type="button" class="stage-tab" role="tab" aria-selected="false" data-beat="1">Think first</button>
+              <button type="button" class="stage-tab" role="tab" aria-selected="false" data-beat="2">Keep braining</button>
+            </div>
+            <button type="button" class="stage-next" id="stage-next" aria-label="Next beat">
+              <span>Next</span>
+              <span aria-hidden="true">&#8594;</span>
+            </button>
           </div>
         </div>
-
-        <aside class="check-card" aria-labelledby="check-title">
-          <div class="check-top">
-            <span class="check-badge">10-Second Check</span>
-            <span class="check-score" id="check-score">0 / 3</span>
-          </div>
-          <h2 id="check-title" class="check-heading">Who is driving today?</h2>
-          <p class="check-sub">Tap what you actually did on your last AI task:</p>
-
-          <div class="check-options" role="group" aria-label="Brain check habits">
-            <button type="button" class="check-pill" data-check="0" aria-pressed="false">
-              <span class="check-box" aria-hidden="true"></span>
-              <span>Outlined my own idea before prompting</span>
-            </button>
-            <button type="button" class="check-pill" data-check="1" aria-pressed="false">
-              <span class="check-box" aria-hidden="true"></span>
-              <span>Asked AI to challenge my thinking</span>
-            </button>
-            <button type="button" class="check-pill" data-check="2" aria-pressed="false">
-              <span class="check-box" aria-hidden="true"></span>
-              <span>Can explain the answer without the tab</span>
-            </button>
-          </div>
-
-          <div class="check-meter" aria-hidden="true">
-            <div class="check-meter-fill" id="check-meter-fill"></div>
-          </div>
-
-          <div class="check-footer">
-            <p class="check-verdict" id="check-verdict" aria-live="polite">Tap any habit above to see your score.</p>
-            <button type="button" class="check-reset" id="check-reset" hidden>Reset</button>
-          </div>
-        </aside>
       </div>
     </section>
 
-    <section aria-labelledby="series-heading">
+    <section id="series" class="series-section" aria-labelledby="series-heading">
       <div class="section-head">
-        <h2 id="series-heading">Six series, one rule of thumb</h2>
-        <p class="section-sub">Pick a series to preview its angle. Every episode checks a real source.</p>
+        <h2 id="series-heading">Six formats. Zero fluff.</h2>
+        <p class="section-sub">Click a format to see how an episode opens.</p>
       </div>
 
-      <ul class="series-grid" role="list">
-        <li>
-          <button type="button" class="series-card is-active" data-series="brain-fact" aria-pressed="true">
-            <span class="series-tag tag-blue">Study twists</span>
-            <span class="series-title">Brain Fact</span>
-            <span class="series-desc">What research actually shows about memory, focus, and leaning on AI.</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="series-card" data-series="checked" aria-pressed="false">
-            <span class="series-tag tag-coral">Myth checks</span>
-            <span class="series-title">Checked.</span>
-            <span class="series-desc">Popular productivity and learning claims tested against the original studies.</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="series-card" data-series="test" aria-pressed="false">
-            <span class="series-tag tag-amber">Self-tests</span>
-            <span class="series-title">60-Second Test</span>
-            <span class="series-desc">Quick, honest checks to spot autopilot habits before they stick.</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="series-card" data-series="prompt" aria-pressed="false">
-            <span class="series-tag tag-green">AI how-tos</span>
-            <span class="series-title">Prompt It</span>
-            <span class="series-desc">Practical prompts shown right on screen so you stay in charge of the thinking.</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="series-card" data-series="work" aria-pressed="false">
-            <span class="series-tag tag-navy">At work</span>
-            <span class="series-title">Work Brain</span>
-            <span class="series-desc">Problem framing, keeping your own voice, and skills AI cannot replace.</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="series-card" data-series="long" aria-pressed="false">
-            <span class="series-tag tag-blue">Deep dives</span>
-            <span class="series-title">Long Read</span>
-            <span class="series-desc">90-second explainers when an idea needs room to unpack.</span>
-          </button>
-        </li>
-      </ul>
+      <div class="series-shell" data-spotlight>
+        <div class="series-pills" role="tablist" aria-label="Brain Ahead series">
+          <button type="button" class="series-pill is-active" role="tab" aria-selected="true" data-series="brain-fact">Brain Fact</button>
+          <button type="button" class="series-pill" role="tab" aria-selected="false" data-series="checked">Checked.</button>
+          <button type="button" class="series-pill" role="tab" aria-selected="false" data-series="test">60-Second Test</button>
+          <button type="button" class="series-pill" role="tab" aria-selected="false" data-series="prompt">Prompt It</button>
+          <button type="button" class="series-pill" role="tab" aria-selected="false" data-series="work">Work Brain</button>
+          <button type="button" class="series-pill" role="tab" aria-selected="false" data-series="long">Long Read</button>
+        </div>
 
-      <div class="series-spotlight" id="series-spotlight" aria-live="polite">
-        <span class="spotlight-kicker" id="spotlight-kicker">Brain Fact · Sample angle</span>
-        <p class="spotlight-hook" id="spotlight-hook">"What happens inside your brain when AI writes your first draft?"</p>
-        <p class="spotlight-note" id="spotlight-note">Study twists unpack surprising cognitive science findings and give you one simple swap to try today.</p>
+        <div class="series-stage" id="series-stage" role="tabpanel">
+          <div class="series-stage-meta">
+            <span class="series-kind" id="series-kind">Study twists</span>
+            <span class="series-rule">Checked source · One rule of thumb</span>
+          </div>
+          <p class="series-hook" id="series-hook">"What happens inside your brain when AI writes your first draft?"</p>
+          <p class="series-desc" id="series-desc">Breaks down what cognitive science actually measured and gives you one simple habit swap to try today.</p>
+        </div>
       </div>
     </section>
 
-    <section id="channels" aria-labelledby="channels-heading">
+    <section id="channels" class="channels-section" aria-labelledby="channels-heading">
       <div class="section-head">
-        <h2 id="channels-heading">Watch Brain Ahead</h2>
-        <p class="section-sub">New episodes Thu, Sat, Sun, and Tue.</p>
+        <h2 id="channels-heading">Where to watch</h2>
+        <p class="section-sub">New short videos every Thu, Sat, Sun, and Tue.</p>
       </div>
       <nav aria-label="Official channels">
         <ul class="channel-list" role="list">
           <li>
-            <a class="channel-link" href="https://www.youtube.com/@brain_ahead" rel="me">
+            <a class="channel-link" href="https://www.youtube.com/@brain_ahead" rel="me" data-spotlight>
               <span class="channel-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.9 2.9 0 0 0-2 2C1.9 9 1.9 12 1.9 12s0 3 .5 4.8a2.9 2.9 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.9 2.9 0 0 0 2-2c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8zM10 15.1V8.9l5.2 3.1-5.2 3.1z"/>
@@ -228,10 +198,11 @@
                 <span class="channel-platform">YouTube Shorts</span>
                 <span class="channel-handle">@brain_ahead</span>
               </span>
+              <span class="channel-go" aria-hidden="true">&#8599;</span>
             </a>
           </li>
           <li>
-            <a class="channel-link" href="https://www.instagram.com/brain_ahead/" rel="me">
+            <a class="channel-link" href="https://www.instagram.com/brain_ahead/" rel="me" data-spotlight>
               <span class="channel-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="5"/>
@@ -243,10 +214,11 @@
                 <span class="channel-platform">Instagram Reels</span>
                 <span class="channel-handle">@brain_ahead</span>
               </span>
+              <span class="channel-go" aria-hidden="true">&#8599;</span>
             </a>
           </li>
           <li>
-            <a class="channel-link" href="https://www.tiktok.com/@brain_ahead" rel="me">
+            <a class="channel-link" href="https://www.tiktok.com/@brain_ahead" rel="me" data-spotlight>
               <span class="channel-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16.6 5.8A4.2 4.2 0 0 1 15 2.5h-3.1v12.8a2.6 2.6 0 1 1-2.6-2.6c.3 0 .6.1.9.2V9.7a5.8 5.8 0 0 0-.9-.1A5.7 5.7 0 1 0 15 15.3V8.7a7.3 7.3 0 0 0 4.3 1.4V7a4.2 4.2 0 0 1-2.7-1.2z"/>
@@ -256,10 +228,11 @@
                 <span class="channel-platform">TikTok</span>
                 <span class="channel-handle">@brain_ahead</span>
               </span>
+              <span class="channel-go" aria-hidden="true">&#8599;</span>
             </a>
           </li>
           <li>
-            <a class="channel-link" href="https://www.facebook.com/brainahead" rel="me">
+            <a class="channel-link" href="https://www.facebook.com/brainahead" rel="me" data-spotlight>
               <span class="channel-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 13.5h2.5l1-4H14v-2c0-1 0-2 2-2h1.5V2.1C17.2 2.1 16 2 14.6 2 11.9 2 10 3.7 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
@@ -269,6 +242,7 @@
                 <span class="channel-platform">Facebook Reels</span>
                 <span class="channel-handle">facebook.com/brainahead</span>
               </span>
+              <span class="channel-go" aria-hidden="true">&#8599;</span>
             </a>
           </li>
         </ul>

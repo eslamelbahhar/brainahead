@@ -1,130 +1,141 @@
 (() => {
-  const root = document.documentElement;
-  const motionToggle = document.getElementById("motion-toggle");
-  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  const syncMotionButton = () => {
-    if (!motionToggle) return;
-    if (reducedMotionQuery.matches) {
-      motionToggle.hidden = true;
+  const withTransition = (updateFn) => {
+    if (!document.startViewTransition || reducedMotion.matches) {
+      updateFn();
       return;
     }
-    motionToggle.hidden = false;
-    const paused = root.classList.contains("motion-paused");
-    motionToggle.textContent = paused ? "Play motion" : "Pause motion";
+    document.startViewTransition(() => updateFn());
   };
 
-  if (motionToggle) {
-    motionToggle.addEventListener("click", () => {
-      root.classList.toggle("motion-paused");
-      syncMotionButton();
-    });
-  }
-  reducedMotionQuery.addEventListener("change", syncMotionButton);
-  syncMotionButton();
-
-  // 10-Second Brain Check
-  const checkButtons = Array.from(document.querySelectorAll(".check-pill"));
-  const scoreEl = document.getElementById("check-score");
-  const fillEl = document.getElementById("check-meter-fill");
-  const verdictEl = document.getElementById("check-verdict");
-  const resetBtn = document.getElementById("check-reset");
-
-  const verdicts = [
-    "Tap any habit above to see your score.",
-    "One solid habit. Try sketching your own answer first next time.",
-    "Strong start. Your brain stayed in the loop for most of the work.",
-    "Brain in the driver's seat. AI was the tool, not the pilot."
-  ];
-
-  const updateCheck = () => {
-    const count = checkButtons.filter((btn) => btn.getAttribute("aria-pressed") === "true").length;
-    if (scoreEl) scoreEl.textContent = `${count} / 3`;
-    if (fillEl) fillEl.style.transform = `scaleX(${count / 3})`;
-    if (verdictEl) verdictEl.textContent = verdicts[count];
-    if (resetBtn) resetBtn.hidden = count === 0;
-  };
-
-  checkButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const next = btn.getAttribute("aria-pressed") !== "true";
-      btn.setAttribute("aria-pressed", String(next));
-      updateCheck();
+  // Subtle pointer-reactive spotlight on interactive surfaces
+  document.querySelectorAll("[data-spotlight]").forEach((el) => {
+    el.addEventListener("pointermove", (e) => {
+      if (reducedMotion.matches) return;
+      const rect = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+      el.style.setProperty("--my", `${e.clientY - rect.top}px`);
     });
   });
 
-  if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      checkButtons.forEach((btn) => btn.setAttribute("aria-pressed", "false"));
-      updateCheck();
+  // Hero interactive Thinking Loop stage
+  const beats = [
+    {
+      tag: "Beat 01 · Autopilot",
+      step: "1 / 3",
+      headlineHTML: 'Open chat first, paste the task, take the <span class="gold-word">first</span> draft.',
+      detail: "Feels fast in the moment. Thirty minutes later, you barely remember what it argued or why."
+    },
+    {
+      tag: "Beat 02 · Think First",
+      step: "2 / 3",
+      headlineHTML: 'Write three rough bullets yourself, then make AI <span class="gold-word">challenge</span> them.',
+      detail: "Two minutes of your own friction turns AI from a crutch into a sharp sparring partner."
+    },
+    {
+      tag: "Beat 03 · Keep Braining",
+      step: "3 / 3",
+      headlineHTML: 'Keep your <span class="gold-word">voice</span>, check the claim, stay in the driver’s seat.',
+      detail: "The tools get faster every month. Your judgment is still the part that compounds."
+    }
+  ];
+
+  let activeBeat = 0;
+  const stageTag = document.getElementById("stage-tag");
+  const stageStep = document.getElementById("stage-step");
+  const stageHeadline = document.getElementById("stage-headline");
+  const stageDetail = document.getElementById("stage-detail");
+  const stageTabs = Array.from(document.querySelectorAll(".stage-tab"));
+  const stageNext = document.getElementById("stage-next");
+
+  const renderBeat = (index) => {
+    const item = beats[index];
+    if (!item) return;
+    activeBeat = index;
+
+    withTransition(() => {
+      if (stageTag) stageTag.textContent = item.tag;
+      if (stageStep) stageStep.textContent = item.step;
+      if (stageHeadline) stageHeadline.innerHTML = item.headlineHTML;
+      if (stageDetail) stageDetail.textContent = item.detail;
+
+      stageTabs.forEach((tab, i) => {
+        const selected = i === index;
+        tab.classList.toggle("is-active", selected);
+        tab.setAttribute("aria-selected", String(selected));
+      });
+    });
+  };
+
+  stageTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const idx = Number(tab.dataset.beat);
+      if (!Number.isNaN(idx) && idx !== activeBeat) renderBeat(idx);
+    });
+  });
+
+  if (stageNext) {
+    stageNext.addEventListener("click", () => {
+      renderBeat((activeBeat + 1) % beats.length);
     });
   }
 
-  // Interactive Six Series spotlight
+  // Interactive Six Formats explorer
   const seriesData = {
     "brain-fact": {
-      kicker: "Brain Fact · Sample angle",
+      kind: "Study twists",
       hook: "\"What happens inside your brain when AI writes your first draft?\"",
-      note: "Study twists unpack surprising cognitive science findings and give you one simple swap to try today."
+      desc: "Breaks down what cognitive science actually measured and gives you one simple habit swap to try today."
     },
     "checked": {
-      kicker: "Checked. · Sample angle",
+      kind: "Myth checks",
       hook: "\"Are you really a 'visual learner', or did a quiz just stick a label on you?\"",
-      note: "Myth checks test popular work and study advice directly against the original research papers."
+      desc: "Tests popular productivity and study advice directly against the original research papers."
     },
     "test": {
-      kicker: "60-Second Test · Sample angle",
+      kind: "Self-tests",
       hook: "\"Five yes-or-no questions to tell if you use AI, or AI uses you.\"",
-      note: "Timed self-checks help you catch autopilot habits before they turn into your default."
+      desc: "Quick timed self-checks that catch autopilot habits before they turn into your default."
     },
     "prompt": {
-      kicker: "Prompt It · Sample angle",
+      kind: "AI how-tos",
       hook: "\"Stop asking for the answer. Ask AI to quiz you before it helps.\"",
-      note: "Real prompts shown right on screen so you keep ownership of the thinking."
+      desc: "Practical prompts shown word for word on screen so you keep ownership of the thinking."
     },
     "work": {
-      kicker: "Work Brain · Sample angle",
+      kind: "At work",
       hook: "\"What your manager notices when every draft sounds the same.\"",
-      note: "Practical workplace habits around problem framing, keeping your voice, and building judgment."
+      desc: "Workplace habits around problem framing, keeping your voice, and building judgment."
     },
     "long": {
-      kicker: "Long Read · Sample angle",
+      kind: "Deep dives",
       hook: "\"Calculators did not make us bad at thinking. Why is AI different?\"",
-      note: "90-second explainers when an idea deserves historical context and nuance."
+      desc: "90-second explainers when an idea deserves historical context and nuance."
     }
   };
 
-  const seriesButtons = Array.from(document.querySelectorAll(".series-card"));
-  const spotlight = document.getElementById("series-spotlight");
-  const kickerEl = document.getElementById("spotlight-kicker");
-  const hookEl = document.getElementById("spotlight-hook");
-  const noteEl = document.getElementById("spotlight-note");
+  const seriesPills = Array.from(document.querySelectorAll(".series-pill"));
+  const seriesKind = document.getElementById("series-kind");
+  const seriesHook = document.getElementById("series-hook");
+  const seriesDesc = document.getElementById("series-desc");
 
-  seriesButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const key = btn.dataset.series;
+  seriesPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const key = pill.dataset.series;
       const entry = key ? seriesData[key] : null;
-      if (!entry) return;
+      if (!entry || pill.classList.contains("is-active")) return;
 
-      seriesButtons.forEach((other) => {
-        const active = other === btn;
-        other.classList.toggle("is-active", active);
-        other.setAttribute("aria-pressed", String(active));
+      withTransition(() => {
+        seriesPills.forEach((other) => {
+          const selected = other === pill;
+          other.classList.toggle("is-active", selected);
+          other.setAttribute("aria-selected", String(selected));
+        });
+        if (seriesKind) seriesKind.textContent = entry.kind;
+        if (seriesHook) seriesHook.textContent = entry.hook;
+        if (seriesDesc) seriesDesc.textContent = entry.desc;
       });
-
-      if (spotlight && !reducedMotionQuery.matches && !root.classList.contains("motion-paused")) {
-        spotlight.classList.add("is-swapping");
-        window.setTimeout(() => {
-          if (kickerEl) kickerEl.textContent = entry.kicker;
-          if (hookEl) hookEl.textContent = entry.hook;
-          if (noteEl) noteEl.textContent = entry.note;
-          spotlight.classList.remove("is-swapping");
-        }, 120);
-      } else {
-        if (kickerEl) kickerEl.textContent = entry.kicker;
-        if (hookEl) hookEl.textContent = entry.hook;
-        if (noteEl) noteEl.textContent = entry.note;
-      }
     });
   });
 })();
