@@ -8,7 +8,7 @@
   <meta name="description" content="Use AI without switching your brain off. Think first. Then AI. Short, research-checked videos on AI habits, critical thinking, and learning.">
   <link rel="canonical" href="https://brainahead.app/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <meta name="theme-color" content="#eaf3ff">
+  <meta name="theme-color" content="#f4f7fc">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Brain Ahead | Think first. Then AI.">
   <meta property="og:description" content="Use AI without switching your brain off. Think first. Then AI.">
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="Brain Ahead">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6RZFEH31D"></script>
   <script>
@@ -59,14 +59,14 @@
   </script>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand-lockup" href="https://brainahead.app/">
+  <main class="card-shell">
+    <header class="identity">
       <svg class="brand-mark" role="img" viewBox="-10 0 430 350" aria-labelledby="logo-title">
         <title id="logo-title">Brain Ahead logo</title>
         <defs>
           <linearGradient id="cg" gradientUnits="userSpaceOnUse" x1="60" y1="40" x2="370" y2="330">
             <stop offset="0" stop-color="#3D7BEE"/>
-            <stop offset="1" stop-color="#1F52C6"/>
+            <stop offset="1" stop-color="#1E5BD8"/>
           </linearGradient>
         </defs>
         <g fill="url(#cg)">
@@ -85,274 +85,93 @@
           <path d="M256 303q38 7 66-21"/>
         </g>
         <path d="M150 118 207 175 150 232" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M228 118 285 175 228 232" fill="none" stroke="#FDB022" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M228 118 285 175 228 232" fill="none" stroke="#FFB020" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span class="brand-name">Brain Ahead</span>
-    </a>
+      <h1>Brain Ahead</h1>
+      <p class="bio">Use AI without switching your brain off.</p>
+      <p class="tagline">Think first. Then AI.</p>
+    </header>
 
-    <nav class="header-nav" aria-label="Primary">
-      <a class="nav-link" href="#channels">Channels</a>
-      <a class="nav-link" href="#cards">Series</a>
-      <a class="nav-cta" href="https://www.youtube.com/@brain_ahead" rel="me">Watch Shorts</a>
-    </nav>
-  </header>
-
-  <main class="site-main">
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="hero-copy">
-        <p class="sticker-pill">Think first. Then AI.</p>
-        <h1 id="hero-heading">
-          Use AI without switching your <span class="word-pill">brain</span> off.
-        </h1>
-        <p class="hero-lead">
-          Short, lively videos for people who use AI every day and want to keep their edge.
-          Study twists, myth checks, self-tests, and work habits with zero doom.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://www.youtube.com/@brain_ahead" rel="me">
-            <span>Watch on YouTube</span>
-            <span class="btn-arrow" aria-hidden="true">&#8594;</span>
-          </a>
-          <a class="btn btn-secondary" href="#cards">Flip the 6 cards</a>
-        </div>
-      </div>
-
-      <div class="lab-frame" id="lab-frame" data-mode="autopilot">
-        <div class="lab-top">
-          <fieldset class="mode-switch">
-            <legend class="visually-hidden">Choose thinking mode</legend>
-            <label class="mode-option">
-              <input type="radio" name="brain-mode" value="autopilot" checked>
-              <span>Autopilot</span>
-            </label>
-            <label class="mode-option">
-              <input type="radio" name="brain-mode" value="think-first">
-              <span>Think first</span>
-            </label>
-          </fieldset>
-          <button type="button" class="replay-btn" id="replay-btn">Replay</button>
-        </div>
-
-        <div class="lab-scene" aria-hidden="true">
-          <svg class="scene-svg scene-autopilot" viewBox="0 0 320 150">
-            <line x1="115" y1="0" x2="115" y2="46" stroke="#1E5BD8" stroke-width="3" stroke-dasharray="5 5"/>
-            <line x1="205" y1="0" x2="205" y2="46" stroke="#1E5BD8" stroke-width="3" stroke-dasharray="5 5"/>
-            <rect x="78" y="42" width="164" height="84" rx="22" fill="#EAF3FF" stroke="#0F2A5C" stroke-width="4"/>
-            <circle cx="132" cy="80" r="10" fill="#0F2A5C"/>
-            <circle cx="188" cy="80" r="10" fill="#0F2A5C"/>
-            <path d="M138 104 Q160 98 182 104" fill="none" stroke="#0F2A5C" stroke-width="4" stroke-linecap="round"/>
-            <rect x="208" y="24" width="76" height="28" rx="14" fill="#FF5A4D"/>
-            <text x="246" y="42" text-anchor="middle" fill="#FFFFFF" font-family="Montserrat, sans-serif" font-size="11" font-weight="800">ASLEEP</text>
-          </svg>
-
-          <svg class="scene-svg scene-think" viewBox="0 0 320 150">
-            <g stroke="#FFB020" stroke-width="5" stroke-linecap="round">
-              <line x1="68" y1="36" x2="86" y2="48"/>
-              <line x1="160" y1="12" x2="160" y2="28"/>
-              <line x1="252" y1="36" x2="234" y2="48"/>
-            </g>
-            <g fill="#FFFFFF">
-              <circle cx="160" cy="70" r="34"/>
-              <circle cx="122" cy="82" r="26"/>
-              <circle cx="198" cy="82" r="26"/>
-              <rect x="112" y="78" width="96" height="32" rx="16"/>
-            </g>
-            <path d="M138 68 L158 86 L138 104" fill="none" stroke="#1E5BD8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M168 68 L188 86 L168 104" fill="none" stroke="#FFB020" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-
-          <span class="checked-stamp" aria-hidden="true">CHECKED.</span>
-        </div>
-
-        <div class="lab-captions" aria-live="polite">
-          <p class="caption-line" id="caption-line">
-            <span class="cap-word">Open</span>
-            <span class="cap-word">chat</span>
-            <span class="cap-word">first,</span>
-            <span class="cap-word is-gold">forget</span>
-            <span class="cap-word">by</span>
-            <span class="cap-word">lunch.</span>
-          </p>
-          <p class="lab-outcome" id="lab-outcome">Flip the switch above to see what changes.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="channels" class="channels-section" aria-labelledby="channels-heading">
-      <div class="section-head">
-        <h2 id="channels-heading">Watch Brain Ahead</h2>
-        <p class="section-sub">New episodes every Thu, Sat, Sun, and Tue.</p>
-      </div>
-
-      <nav aria-label="Official channels">
-        <ul class="channel-list" role="list">
-          <li>
-            <a class="channel-link" href="https://www.youtube.com/@brain_ahead" rel="me">
-              <span class="channel-icon icon-yt" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <nav aria-label="Official channels">
+      <ul class="links" role="list">
+        <li>
+          <a class="link-card" href="https://www.youtube.com/@brain_ahead" rel="me">
+            <article class="link-row">
+              <span class="icon-badge" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.9 2.9 0 0 0-2 2C1.9 9 1.9 12 1.9 12s0 3 .5 4.8a2.9 2.9 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.9 2.9 0 0 0 2-2c.5-1.8.5-4.8.5-4.8s0-3-.5-4.8zM10 15.1V8.9l5.2 3.1-5.2 3.1z"/>
                 </svg>
               </span>
-              <span class="channel-meta">
-                <span class="channel-platform">YouTube Shorts</span>
-                <span class="channel-handle">@brain_ahead</span>
-              </span>
-              <span class="channel-go" aria-hidden="true">&#8599;</span>
-            </a>
-          </li>
-          <li>
-            <a class="channel-link" href="https://www.instagram.com/brain_ahead/" rel="me">
-              <span class="channel-icon icon-ig" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <div class="row-meta">
+                <h2>YouTube Shorts</h2>
+                <p>@brain_ahead</p>
+              </div>
+              <span class="row-go" aria-hidden="true">&#8599;</span>
+            </article>
+          </a>
+        </li>
+        <li>
+          <a class="link-card" href="https://www.instagram.com/brain_ahead/" rel="me">
+            <article class="link-row">
+              <span class="icon-badge" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="3" width="18" height="18" rx="5"/>
                   <circle cx="12" cy="12" r="4"/>
                   <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
                 </svg>
               </span>
-              <span class="channel-meta">
-                <span class="channel-platform">Instagram Reels</span>
-                <span class="channel-handle">@brain_ahead</span>
-              </span>
-              <span class="channel-go" aria-hidden="true">&#8599;</span>
-            </a>
-          </li>
-          <li>
-            <a class="channel-link" href="https://www.tiktok.com/@brain_ahead" rel="me">
-              <span class="channel-icon icon-tt" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <div class="row-meta">
+                <h2>Instagram Reels</h2>
+                <p>@brain_ahead</p>
+              </div>
+              <span class="row-go" aria-hidden="true">&#8599;</span>
+            </article>
+          </a>
+        </li>
+        <li>
+          <a class="link-card" href="https://www.tiktok.com/@brain_ahead" rel="me">
+            <article class="link-row">
+              <span class="icon-badge" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M16.6 5.8A4.2 4.2 0 0 1 15 2.5h-3.1v12.8a2.6 2.6 0 1 1-2.6-2.6c.3 0 .6.1.9.2V9.7a5.8 5.8 0 0 0-.9-.1A5.7 5.7 0 1 0 15 15.3V8.7a7.3 7.3 0 0 0 4.3 1.4V7a4.2 4.2 0 0 1-2.7-1.2z"/>
                 </svg>
               </span>
-              <span class="channel-meta">
-                <span class="channel-platform">TikTok</span>
-                <span class="channel-handle">@brain_ahead</span>
-              </span>
-              <span class="channel-go" aria-hidden="true">&#8599;</span>
-            </a>
-          </li>
-          <li>
-            <a class="channel-link" href="https://www.facebook.com/brainahead" rel="me">
-              <span class="channel-icon icon-fb" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <div class="row-meta">
+                <h2>TikTok</h2>
+                <p>@brain_ahead</p>
+              </div>
+              <span class="row-go" aria-hidden="true">&#8599;</span>
+            </article>
+          </a>
+        </li>
+        <li>
+          <a class="link-card" href="https://www.facebook.com/brainahead" rel="me">
+            <article class="link-row">
+              <span class="icon-badge" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 13.5h2.5l1-4H14v-2c0-1 0-2 2-2h1.5V2.1C17.2 2.1 16 2 14.6 2 11.9 2 10 3.7 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
                 </svg>
               </span>
-              <span class="channel-meta">
-                <span class="channel-platform">Facebook Reels</span>
-                <span class="channel-handle">fb.com/brainahead</span>
-              </span>
-              <span class="channel-go" aria-hidden="true">&#8599;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </section>
-
-    <section id="cards" class="cards-section" aria-labelledby="cards-heading">
-      <div class="section-head">
-        <h2 id="cards-heading">Six series on the desk</h2>
-        <p class="section-sub">Tap any card to stamp and open the episode angle.</p>
-      </div>
-
-      <ul class="deck-grid" role="list">
-        <li>
-          <button type="button" class="index-card tilt-left" aria-expanded="false">
-            <span class="card-top">
-              <span class="card-tag tag-blue">Study twists</span>
-              <span class="card-stamp">FACT</span>
-            </span>
-            <span class="card-title">Brain Fact</span>
-            <span class="card-front">What happens inside your brain when AI writes your first draft?</span>
-            <span class="card-back">
-              <strong>The angle:</strong> Unpacks what cognitive science measured when people hand the first draft to AI, and gives one simple swap you can try today.
-            </span>
-            <span class="card-cue">Tap to flip</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="index-card tilt-right" aria-expanded="false">
-            <span class="card-top">
-              <span class="card-tag tag-coral">Myth checks</span>
-              <span class="card-stamp">CHECKED.</span>
-            </span>
-            <span class="card-title">Checked.</span>
-            <span class="card-front">Are you really a "visual learner", or did a quiz stick a label on you?</span>
-            <span class="card-back">
-              <strong>The angle:</strong> Tests popular learning and productivity claims directly against the original papers, no hype allowed.
-            </span>
-            <span class="card-cue">Tap to flip</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="index-card tilt-left" aria-expanded="false">
-            <span class="card-top">
-              <span class="card-tag tag-amber">Self-tests</span>
-              <span class="card-stamp">60s TEST</span>
-            </span>
-            <span class="card-title">60-Second Test</span>
-            <span class="card-front">Five yes-or-no questions to tell if you use AI, or AI uses you.</span>
-            <span class="card-back">
-              <strong>The angle:</strong> A fast, honest self-score you can take in real time before autopilot becomes your default habit.
-            </span>
-            <span class="card-cue">Tap to flip</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="index-card tilt-right" aria-expanded="false">
-            <span class="card-top">
-              <span class="card-tag tag-green">AI how-tos</span>
-              <span class="card-stamp">PROMPT</span>
-            </span>
-            <span class="card-title">Prompt It</span>
-            <span class="card-front">Stop asking for the answer. Ask AI to quiz you first.</span>
-            <span class="card-back">
-              <strong>The angle:</strong> Real prompts shown right on screen so AI challenges your draft instead of replacing your thinking.
-            </span>
-            <span class="card-cue">Tap to flip</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="index-card tilt-left" aria-expanded="false">
-            <span class="card-top">
-              <span class="card-tag tag-navy">At work</span>
-              <span class="card-stamp">WORK</span>
-            </span>
-            <span class="card-title">Work Brain</span>
-            <span class="card-front">What your manager notices when every draft sounds the same.</span>
-            <span class="card-back">
-              <strong>The angle:</strong> Practical workplace habits around framing problems, keeping your own voice, and building judgment.
-            </span>
-            <span class="card-cue">Tap to flip</span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="index-card tilt-right" aria-expanded="false">
-            <span class="card-top">
-              <span class="card-tag tag-blue">Deep dives</span>
-              <span class="card-stamp">90s READ</span>
-            </span>
-            <span class="card-title">Long Read</span>
-            <span class="card-front">Calculators did not make us bad at thinking. Why is AI different?</span>
-            <span class="card-back">
-              <strong>The angle:</strong> 90-second explainers when an idea needs room for history, nuance, and the honest trade-off.
-            </span>
-            <span class="card-cue">Tap to flip</span>
-          </button>
+              <div class="row-meta">
+                <h2>Facebook Reels</h2>
+                <p>fb.com/brainahead</p>
+              </div>
+              <span class="row-go" aria-hidden="true">&#8599;</span>
+            </article>
+          </a>
         </li>
       </ul>
-    </section>
+    </nav>
+
+    <footer class="card-footer">
+      <p class="signoff">
+        <svg class="chevrons" viewBox="120 90 195 170" aria-hidden="true">
+          <path d="M150 118 207 175 150 232" fill="none" stroke="#1E5BD8" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M228 118 285 175 228 232" fill="none" stroke="#FFB020" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Keep braining.
+      </p>
+    </footer>
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-signoff">
-      <svg class="footer-chevrons" aria-hidden="true" viewBox="120 90 195 170">
-        <path d="M150 118 207 175 150 232" fill="none" stroke="#1E5BD8" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M228 118 285 175 228 232" fill="none" stroke="#FFB020" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      Keep braining.
-    </p>
-  </footer>
-
-  <script src="/app.js" defer></script>
 </body>
 </html>
